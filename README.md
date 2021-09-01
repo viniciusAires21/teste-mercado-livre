@@ -46,7 +46,7 @@ Clone o repositório, é preciso ter [Git] instalado (https://git-scm.com/).
 ### Execução
 ```bash
 #se não estiver, vá para a pasta de execução
-$ cd .\teste-mercado-livre\
+$ cd .\teste-mercado-livre-master\
 
 #instalando as dependecias
 $ npm install
@@ -65,7 +65,7 @@ $ npm start
 Para rodar os testes é necessário executar:
 
 ```bash
-#na pasta .\teste-mercado-livre\
+#na pasta .\teste-mercado-livre-master\
 $ npm test 
 ```
 
