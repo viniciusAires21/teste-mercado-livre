@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Main = styled.main`
   width: 100%;
-  height: 93.5vh;
+  height: 100%;
   background-color: #EEEEEE;
   padding-bottom: 2em;
 `;
