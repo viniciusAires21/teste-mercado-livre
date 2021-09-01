@@ -7,7 +7,8 @@ Indice
    * [Tecnologias](#tecnologias)
    * [Instalação](#instalação)
    * [Execução](#execução)
-   * [Tests](#testes)
+   * [Tests](#testes) 
+   * [Problemas](#problemas) 
 <!--te-->
 
 ### Tecnologias
@@ -69,7 +70,10 @@ $ npm test
 ```
 
 ### Problemas
-A única parte não realizada da forma que foi especificada no teste, foi o endpoint "/items?search=".
+- A única parte não realizada da forma que foi especificada no teste, foi o endpoint "/items?search=".
 O react-router-dom não reconhece um endpoint de filtragem (search), por conta do ponto de interrogação (?) e 
 não consegui resolver o problema para que fosse da forma que foi pedido.
 Então para que a aplicação funcionasse, a resposta da pesquisa de algum produto é feita no endpoint "/:produto".
+- Outra questão é o Beck-end for Front-end, não está da melhor forma. Tentei automatizar, porém não consegui. Tentei fazer
+um 'for' e '.map()' para que os elementos dentro do JSON fossem criados automaticamente mas não deu certo. Então
+como eram apenas quatro 'items' e poucas categorias, fiz manualmente. 
