@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { busca, buscaCategorias, buscaProduto } = require('./service')
+const { busca, buscaCategorias, buscaProduto } = require('./service/index')
 
 const app = express();
 app.use(cors())

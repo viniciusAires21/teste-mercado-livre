@@ -1,3 +1,4 @@
+![](/src/Assets/Logo_ML@2x.png.png.png)
 # Teste Front-end Mercado Livre
 <p align="center">SPA (single page application) de pesquisa e resultado de produtos do mercado livre</p>
 
