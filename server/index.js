@@ -1,42 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const cors = require('cors');
+const { busca, buscaCategorias, buscaProduto } = require('./service')
 
 const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-const api = axios.create({
-    baseURL: 'https://api.mercadolibre.com/sites/MLA/search?q='
-})
-
-const busca = async (url) => {
-    const resposta = await api.get(url)
-    return(resposta.data.results)  
-}
-
-const apiCategorias = axios.create({
-    baseURL: 'https://api.mercadolibre.com/categories/'
-})
-
-const buscaCategorias = async (url) => {
-    const resposta = await apiCategorias.get(url)
-    return(resposta.data.path_from_root)
-}
-
-const apiProduto = axios.create({
-    baseURL: 'https://api.mercadolibre.com/items/'
-})
-
-const buscaProduto = async (url) => {
-    const resposta = await apiProduto.get(url)
-    return(resposta.data)
-}
-
 app.get(`/api/items`, (req, res) => {
-    const pesquisa = req.query;
-    const resultado = busca(`${pesquisa.q}`)
+    const query = req.query;
+    const resultado = busca(`${query.q}`)
     res.status(200)
 
     async function dados(){

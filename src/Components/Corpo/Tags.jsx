@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { cinzaEscuro } from '../Variaveis';
 
 const ContainerTags = styled.section`
     width: 65%;
@@ -14,11 +15,11 @@ const ContainerTags = styled.section`
 
 const ConteudoTags = styled.p`
     font-size: 14px;
-    color: #999999;
+    color: ${cinzaEscuro};
     margin: 0 0.4em;
     
     &:hover {
-        text-decoration: underline #999999; 
+        text-decoration: underline ${cinzaEscuro}; 
         cursor: pointer;
     }
 `;
