@@ -16,3 +16,4 @@ route.get('/', (req, res) => {
         .catch(erro => console.log(erro))
 })
 
+module.exports = route;

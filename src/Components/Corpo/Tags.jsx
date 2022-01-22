@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { cinzaEscuro } from '../Variaveis';
 
@@ -25,25 +25,32 @@ const ConteudoTags = styled.p`
 `;
 
 const Tags = () => {
-    const [tags, setTags] = useState([]);
-    const { produto } = useParams();
-    
-    useEffect(() => {
+    const [ tags, setTags ] = useState([]);
+    const { search } = useLocation()
+    const searchParams = new URLSearchParams(search)
+    const produto = searchParams.get('search');
 
+    useEffect(() => {
         fetch(`http://localhost:4000/api/items?q=${produto}`)
         .then(resServidor => {
             return resServidor.json()
         })
         .then(resConvertida => {
-            return setTags(resConvertida.categories);
+            return setTags(resConvertida.categorias);
         })
     }, [ produto ])
+
+
 
     function componentesDados(dados) {
         if(dados !== undefined && dados.length !== 0) {
             return(
                 dados.map((item) => (
-                    <Link to={`/${item}`}>
+                    <Link to={{
+                                pathname: '/items',
+                                search: `search=${item}`
+                            }}
+                        >
                         <ConteudoTags>{`${item} >`}</ConteudoTags> 
                     </Link>
                 ))

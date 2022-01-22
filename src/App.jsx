@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from "./Components/Cabeçalho/Navegacao";
 import { GlobalStyle } from "./Components/GlobalStyle";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PageListaProdutos from './Pages/PageListaProdutos';
 import PageProduto from './Pages/PageProduto';
 
@@ -11,11 +11,17 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Header />
-        <Switch>
-          <Route exact path='/' />
-          <Route exact path='/:produto' component={PageListaProdutos} />
-          <Route exact path='/items/:id' component={PageProduto} />
-        </Switch>
+        <Routes>
+          <Route
+            path={'/:produto'} 
+            element={<PageListaProdutos />} 
+          />
+          <Route 
+            exact 
+            path='/items/:id' 
+            element={<PageProduto />} 
+          />
+        </Routes>
       </BrowserRouter>
   );
 }

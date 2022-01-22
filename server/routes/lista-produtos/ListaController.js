@@ -10,8 +10,8 @@ module.exports = {
         const resItems = dadosItems.data.results
         
         const dadosCategoria = await baseUrl.get(`categories/${resItems[0].category_id}`)
-        const resCategorias = dadosCategoria.data.path_from_root
-
+        const resCategorias = dadosCategoria.data.path_from_root;
+        
         const categorias = [];
         const items = [];
         
@@ -30,7 +30,7 @@ module.exports = {
                 'location': resItems[i].address.state_name
             }
             
-            if(resCategorias[i].name !== undefined && resCategorias[i].name.length !== 0){
+            if(i < resCategorias.length){
                 categorias.push(resCategorias[i].name)
             }
             

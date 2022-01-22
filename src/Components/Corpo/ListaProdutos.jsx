@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import shipping from '../../Assets/ic_shipping@2x.png.png.png';
 
-const ContainerProdutos = styled.section`
+const ContainerProdutos = styled.ol`
     width: 65%;
     height: auto;
     background-color: white;
@@ -13,7 +13,7 @@ const ContainerProdutos = styled.section`
 
 `;
 
-const Card = styled.article`
+const Card = styled.li`
     width: 100%;
     height: 212px;
     display: flex;
@@ -67,8 +67,11 @@ const Shipping = styled.img`
 
 const ListaProdutos = () => {
     const [produtos, setProdutos] = useState([]);
-    const { produto } = useParams();
-    let history = useHistory();
+    let history = useNavigate();
+
+    const { search } = useLocation()
+    const searchParams = new URLSearchParams(search)
+    const produto = searchParams.get('search');
 
     useEffect(() => {
         fetch(`http://localhost:4000/api/items?q=${produto}`)
@@ -92,10 +95,17 @@ const ListaProdutos = () => {
         <ContainerProdutos data-testid='container-produtos'>
             {
                 produtos.map((produto) => (
-                <Card key={produto.id} data-testid='card-produto' onClick={() => {
-                    history.push(`items/${produto.id}`);
-                    }}>
-                    <FotoProduto src={produto.pictures} data-testid='foto-produto'/> 
+                <Card 
+                    key={produto.id} 
+                    data-testid='card-produto' 
+                    onClick={() => {
+                        history(`/items/${produto.id}`);
+                    }}
+                >
+                    <FotoProduto 
+                        src={produto.pictures} 
+                        data-testid='foto-produto'
+                    /> 
                     <DivInfo>
                         <PrecoProduto>$ {produto.price.amount}</PrecoProduto>                    
                         {FreeShipping(produto.free_shipping)}

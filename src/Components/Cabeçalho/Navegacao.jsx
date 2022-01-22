@@ -90,7 +90,10 @@ const Header = () => {
                         onChange={(event) => setPesquisa(event.target.value)}
                     />
                     <Link 
-                        to={`/${valorPesquisa}`}
+                        to={{
+                                pathname: '/items',
+                                search: `search=${valorPesquisa}`
+                            }}
                     >
                         <BotaoPesquisa 
                             data-testid='botao' 

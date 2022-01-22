@@ -5,47 +5,49 @@
 Indice
 =================
 <!--ts-->
-   * [Tecnologias](#tecnologias)
-   * [Instalação](#instalação)
-   * [Execução](#execução)
-   * [Tests](#testes) 
-   * [Problemas](#problemas) 
+   * [Tecnologias](#💻tecnologias)
+   * [Instalação](#📂instalação)
+   * [Execução](#🏃execução)
+   * [Tests](#🧪testes) 
 <!--te-->
 
-### Tecnologias
-**Servidor - Back-end for Front-end**
+### 💻 Tecnologias
+**Servidor - Back-end for Front-end** 
 - express: 
-    Biblioteca usada para criar uma API e gerenciar as diferentes 
-    requisições HTTP. Configurar a conexão no server, 
-    a porta de conexão, as respostas e as requisições.
+    Framework para Node.js que fornece recursos para construção de servidores web. 
+    Usado para criar uma API e gerenciar as diferentes 
+    requisições HTTP. 
 - body-parser: 
     Biblioteca usada para formatação dos dados, no caso em JSON.
 - axios: 
     Biblioteca usada para realizar as requisições HTTP para API do 
     mercado livre e coletar os dados necessários.
 - cors:
-    Biblioteca para não ter bloqueios quando forem requisitados os dados
-    do servidor, pelo cliente.
+    Biblioteca de segurança nas requisitados dos dados
+    do servidor, pelo cliente. Para não haver bloqueios nas requisições.
 
 **Cliente**
 - react: 
-    Framework usado para criar aplicações web, com melhor manipulamento da árvore 
-    do DOM. Além da complexibilidade de renderização dos elementos, ótimo framework 
+    Biblioteca usada para criar aplicações web, com melhor manipulamento da árvore 
+    do DOM. Além da complexibilidade de renderização dos elementos, ótima biblioteca 
     para criação de SPA. 
 - react-router-dom:
-    Biblioteca utilizada para rotear as rotas e não haver refresh da página, tornando-se 
+    Biblioteca utilizada para rotear as rotas, tornando-se 
     assim uma single page application.
 - styled-components:
-    Biblioteca que possibilita contruir o código CSS dentro do próprio arquivo .js ou .jsx
+    Biblioteca que possibilita contruir o código CSS dentro do próprio arquivo .js ou .jsx, misturando o JavaScript com CSS.
 - testing-library/react:
     Biblioteca usada para realização de testes de aplicações React.
 
-### Instalação 
+### 📂 Instalação 
 Para começar é necessário ter instalado na máquina o [Node.js] que pode ser baixado aqui (https://nodejs.org/en/).
 Clone o repositório, é preciso ter [Git] instalado (https://git-scm.com/).
 
-### Execução
+### 🏃 Execução
 ```bash
+#clonar repositório
+$ git clone https://github.com/viniciusAires21/teste-mercado-livre
+
 #se não estiver, vá para a pasta de execução
 $ cd .\teste-mercado-livre-master\
 
@@ -59,22 +61,12 @@ $ node .\server\index.js
 $ npm start
 
 #a aplicação começará a rodar na porta: 3000 - acesse <http://localhost:3000>
-#o server dos dados roda na porta: 4000 
 ```
 
-### Testes
+### 🧪 Testes
 Para rodar os testes é necessário executar:
 
 ```bash
 #na pasta .\teste-mercado-livre-master\
 $ npm test 
 ```
-
-### Problemas
-- A única parte não realizada da forma que foi especificada no teste, foi o endpoint "/items?search=".
-O react-router-dom não reconhece um endpoint de filtragem (search), por conta do ponto de interrogação (?) e 
-não consegui resolver o problema para que fosse da forma que foi pedido.
-Então para que a aplicação funcionasse, a resposta da pesquisa de algum produto é feita no endpoint "/:produto".
-- Outra questão é o Beck-end for Front-end, não está da melhor forma. Tentei automatizar, porém não consegui. Tentei fazer
-um 'for' e '.map()' para que os elementos dentro do JSON fossem criados automaticamente mas não deu certo. Então
-como eram apenas quatro 'items' e poucas categorias, fiz manualmente. 
