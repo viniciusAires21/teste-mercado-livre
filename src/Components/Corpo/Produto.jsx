@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
+import { azul } from '../Variaveis';
 
 const ContainerProduto = styled.section`
     width: 65%;
@@ -62,7 +63,7 @@ const PrecoProduto = styled.h1`
 
 const BotaoCompra = styled.button`
     width: 100%;
-    background-color: #3483FA;
+    background-color: ${azul};
     height: 60px;
     border: none;
     color: white;
