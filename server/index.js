@@ -1,164 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
+
 app.use(cors())
 app.use(bodyParser.json());
 
-const api = axios.create({
-    baseURL: 'https://api.mercadolibre.com/sites/MLA/search?q='
-})
+const routeLista = require('./routes/lista-produtos')
+app.use('/api/items', routeLista);
 
-const busca = async (url) => {
-    const resposta = await api.get(url)
-    return(resposta.data.results)  
-}
-
-const apiCategorias = axios.create({
-    baseURL: 'https://api.mercadolibre.com/categories/'
-})
-
-const buscaCategorias = async (url) => {
-    const resposta = await apiCategorias.get(url)
-    return(resposta.data.path_from_root)
-}
-
-const apiProduto = axios.create({
-    baseURL: 'https://api.mercadolibre.com/items/'
-})
-
-const buscaProduto = async (url) => {
-    const resposta = await apiProduto.get(url)
-    return(resposta.data)
-}
-
-app.get(`/api/items`, (req, res) => {
-    const pesquisa = req.query;
-    const resultado = busca(`${pesquisa.q}`)
-    res.status(200)
-
-    async function dados(){
-        try {
-            const res = await resultado;
-            const categorias = buscaCategorias(res[0].category_id);
-            const catg = await categorias;
-            
-            return {
-                'author': {
-                    'name': 'Vinicius',
-                    'lastname': 'Aires'
-                },                
-                'categories': [catg[0].name, catg[1].name],
-                'items': [
-                    {
-                    'id': res[0].id,
-                    'title': res[0].title,
-                    'price': {
-                        'currency': res[0].currency_id,
-                        'amount': res[0].price,
-                        'decimals': res[0].prices.amount
-                    },
-                    'pictures': res[0].thumbnail,
-                    'condition': res[0].condition,
-                    'free_shipping': res[0].shipping.free_shipping,
-                    'location': res[0].address.state_name
-                    },
-                    {
-                    'id': res[1].id,
-                    'title': res[1].title,
-                    'price': {
-                        'currency': res[1].currency_id,
-                        'amount': res[1].price,
-                        'decimals': res[1].prices.amount
-                    },
-                    'pictures': res[1].thumbnail,
-                    'condition': res[1].condition,
-                    'free_shipping': res[1].shipping.free_shipping,
-                    'location': res[1].address.state_name
-                    },
-                    {
-                        'id': res[2].id,
-                        'title': res[2].title,
-                        'price': {
-                            'currency': res[2].currency_id,
-                            'amount': res[2].price,
-                            'decimals': res[2].prices.amount
-                        },
-                        'pictures': res[2].thumbnail,
-                        'condition': res[2].condition,
-                        'free_shipping': res[2].shipping.free_shipping,
-                        'location': res[2].address.state_name
-                    },
-                    {
-                        'id': res[3].id,
-                        'title': res[3].title,
-                        'price': {
-                            'currency': res[3].currency_id,
-                            'amount': res[3].price,
-                            'decimals': res[3].prices.amount
-                        },
-                        'pictures': res[3].thumbnail,
-                        'condition': res[3].condition,
-                        'free_shipping': res[3].shipping.free_shipping,
-                        'location': res[3].address.state_name
-                    }
-                ]
-
-            };
-        } catch (erro) {
-            return console.log(erro);
-        }
-
-    }
-    
-    dados().then(resposta => res.send(
-        resposta
-        ))
-})
-
-app.get('/api/items/:id', (req, res) => {
-    const id = req.params.id;
-    const resultado = buscaProduto(id);
-    const descricao = buscaProduto(`${id}/description`);
-    res.status(200)
-
-    async function dados() {
-        try{
-            const res = await resultado;
-            const desc = await descricao;
-
-            return {
-                'author': {
-                    'name': 'Vinicius',
-                    'lastname': 'Aires'
-                    },
-                    'item': {
-                        "id": res.id,
-                        "title": res.title,
-                        "price": {
-                            "currency": res.currency_id,
-                            "amount": res.price,
-                            "decimals": res.price,
-                    },
-                    'picture': res.pictures[0].url,
-                    'condition': res.condition,
-                    'free_shipping': res.shipping.free_shipping,
-                    'sold_quantity': res.sold_quantity,
-                    'description': desc.plain_text
-                    }
-                    
-            }
-
-        } catch (erro) {
-            console.log(erro)
-        }
-    }
-
-    dados().then(resposta => res.send(
-        resposta
-    ))
-})
+const routeProduto = require('./routes/produto')
+app.use('/api/items/:id', routeProduto)
 
 app.listen(4000, (() => console.log('API funcionando')))
