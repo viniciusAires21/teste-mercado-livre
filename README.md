@@ -4,10 +4,10 @@
 
 # Indice
 <!--ts-->
-   * [Tecnologias](#💻tecnologias)
-   * [Instalação](#📂instalação)
-   * [Execução](#🏃execução)
-   * [Tests](#🧪testes) 
+   * [Tecnologias](#tecnologias)
+   * [Instalação](#instalação)
+   * [Execução](#execução)
+   * [Tests](#testes) 
 <!--te-->
 
 ## 💻 Tecnologias
