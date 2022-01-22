@@ -2,8 +2,7 @@
 # Teste Front-end Mercado Livre
 <p align="center">SPA (single page application) de pesquisa e resultado de produtos do mercado livre</p>
 
-Indice
-=================
+# Indice
 <!--ts-->
    * [Tecnologias](#💻tecnologias)
    * [Instalação](#📂instalação)
@@ -11,7 +10,7 @@ Indice
    * [Tests](#🧪testes) 
 <!--te-->
 
-### 💻 Tecnologias
+## 💻 Tecnologias
 **Servidor - Back-end for Front-end** 
 - express: 
     Framework para Node.js que fornece recursos para construção de servidores web. 
@@ -39,11 +38,11 @@ Indice
 - testing-library/react:
     Biblioteca usada para realização de testes de aplicações React.
 
-### 📂 Instalação 
+## 📂 Instalação 
 Para começar é necessário ter instalado na máquina o [Node.js] que pode ser baixado aqui (https://nodejs.org/en/).
 Clone o repositório, é preciso ter [Git] instalado (https://git-scm.com/).
 
-### 🏃 Execução
+## 🏃 Execução
 ```bash
 #clonar repositório
 $ git clone https://github.com/viniciusAires21/teste-mercado-livre
@@ -63,7 +62,7 @@ $ npm start
 #a aplicação começará a rodar na porta: 3000 - acesse <http://localhost:3000>
 ```
 
-### 🧪 Testes
+## 🧪 Testes
 Para rodar os testes é necessário executar:
 
 ```bash
